@@ -57,3 +57,31 @@ Constraints:
     1 <= nums.length <= 100
     0 <= nums[i] <= 109
     0 <= k <= 109
+
+
+
+    class Solution {
+    public int firstStableIndex(int[] nums, int k) {
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+
+            int currentMax = Integer.MIN_VALUE;
+            int currentMin = Integer.MAX_VALUE;
+
+
+            for (int j = 0; j <= i; j++) {
+                currentMax = Math.max(currentMax, nums[j]);
+            }
+
+            for (int j = i; j < n; j++) {
+                currentMin = Math.min(currentMin, nums[j]);
+            }
+            if (currentMax - currentMin <= k) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+}
