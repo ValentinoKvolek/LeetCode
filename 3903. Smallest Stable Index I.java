@@ -59,6 +59,7 @@ Constraints:
     0 <= k <= 109
 
 
+solution: 
 
     class Solution {
     public int firstStableIndex(int[] nums, int k) {
