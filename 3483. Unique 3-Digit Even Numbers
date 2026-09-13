@@ -42,3 +42,40 @@ Constraints:
 
     3 <= digits.length <= 10
     0 <= digits[i] <= 9
+
+
+class Solution {
+
+    public int totalNumbers(int[] digits) {
+
+        int[] contador = new int[10];
+        for (int d : digits) {
+            contador[d]++;
+        }
+        
+        int numerosValidos = 0;
+        
+        for (int num = 100; num < 1000; num += 2) {
+            int d1 = num / 100;
+            int d2 = (num / 10) % 10;
+            int d3 = num % 10;
+            
+            
+            contador[d1]--;
+            contador[d2]--;
+            contador[d3]--;
+            
+        
+            if (contador[d1] >= 0 && contador[d2] >= 0 && contador[d3] >= 0) {
+                numerosValidos++;
+            }
+            
+           
+            contador[d1]++;
+            contador[d2]++;
+            contador[d3]++;
+        }
+        
+        return numerosValidos;
+    }
+}
